@@ -8,9 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    let list = [
+        "Elemento 1",
+        "Elemento 2",
+        "Elemento 3",
+        "Elemento 4",
+        "Elemento 5"
+    ]
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            NavigationView{
+                List{
+                    ForEach(list, id: \.self){
+                        item in
+                        HStack{
+                            Image(systemName: "person")
+                            Text(item)
+                        }
+                        .swipeActions{
+                            Button(action: {
+                                print("Editar")
+                            }){
+                                Image(systemName: "note")
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
