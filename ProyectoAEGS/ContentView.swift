@@ -30,7 +30,7 @@ struct ContentView: View {
                                 print("Editar")
                             }){
                                 Image(systemName: "note")
-                            }
+                            }.tint(.cyan)
                         }
                     }
                 }
