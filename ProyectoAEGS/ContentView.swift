@@ -10,6 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @State private var idempleado = ""
     @State private var nombreempleado = ""
+    @State private var apepatempleado = ""
+    @State private var apematempleado = ""
+    @State private var telefonoempleado = ""
     let list = [
         "Elemento 1",
         "Elemento 2",
@@ -61,25 +64,25 @@ struct ContentView: View {
                         .padding()
                         
                     Text("Nombre(s) de empleado")
-                    TextField("Nombre(s)", text: $idempleado)
+                    TextField("Nombre(s)", text: $nombreempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
                         .padding()
                     
                     Text("Apellido paterno de empleado")
-                    TextField("Apellido paterno", text: $idempleado)
+                    TextField("Apellido paterno", text: $apepatempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
                         .padding()
                     
                     Text("Apellido materno de empleado")
-                    TextField("Apellido materno", text: $idempleado)
+                    TextField("Apellido materno", text: $apematempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
                         .padding()
                     
                     Text("Telefono de empleado")
-                    TextField("Telefono", text: $idempleado)
+                    TextField("Telefono", text: $telefonoempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
                         .padding()
