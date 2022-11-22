@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Empleado" representedClassName="Empleado" syncable="YES" codeGenerationType="class">
+        <attribute name="apeMaterno" optional="YES" attributeType="String"/>
+        <attribute name="apePaterno" optional="YES" attributeType="String"/>
+        <attribute name="idEmpleado" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nombreEmpleado" optional="YES" attributeType="String"/>
+        <attribute name="telefono" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Empleado" positionX="-63" positionY="-18" width="128" height="104"/>
+    </elements>
+</model>
