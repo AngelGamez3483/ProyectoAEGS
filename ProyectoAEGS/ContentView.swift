@@ -8,28 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    let coreDM: CoreDataManager
     @State private var idempleado = ""
     @State private var nombreempleado = ""
     @State private var apepatempleado = ""
     @State private var apematempleado = ""
     @State private var telefonoempleado = ""
-    let list = [
+    let list = [Empleado]()
+    /*[
         "Elemento 1",
         "Elemento 2",
         "Elemento 3",
         "Elemento 4",
         "Elemento 5"
-    ]
+    ]*/
     var body: some View {
         VStack{
             TabView{
                 NavigationView{
                     List{
                         ForEach(list, id: \.self){
-                            item in
+                            idempleado in
                             HStack{
                                 Image(systemName: "person")
-                                Text(item)
+                                Text(nombreempleado)
                             }
                             .swipeActions{
                                 Button(action: {
@@ -87,8 +89,25 @@ struct ContentView: View {
                         .textContentType(.telephoneNumber)
                         .padding()
                     
-                    /*Button("")
-                        .padding()*/
+                    
+                    /*Button("Guardar"){
+                        coreDM.guardarEmpleado(id: 1, Nombre: nombreempleado, ApePat: apepatempleado, ApeMat: apematempleado, Telefono: 1234567890)
+                        ObtenerTodosLosEmpleados()
+                        idempleado = ""
+                        nombreempleado = ""
+                        apematempleado = ""
+                        apepatempleado = ""
+                        telefonoempleado = ""
+                    }*/
+                }
+                Button("Guardar"){
+                    coreDM.guardarEmpleado(id: 1, Nombre: nombreempleado, ApePat: apepatempleado, ApeMat: apematempleado, Telefono: 1234567890)
+                    //ObtenerTodosLosEmpleados()
+                    idempleado = ""
+                    nombreempleado = ""
+                    apematempleado = ""
+                    apepatempleado = ""
+                    telefonoempleado = ""
                 }
                 .tabItem{
                     Image(systemName: "cross")
@@ -101,6 +120,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(coreDM: CoreDataManager())
     }
 }

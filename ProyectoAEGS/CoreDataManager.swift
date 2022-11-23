@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreData{
+class CoreDataManager{
     let persistentContainer: NSPersistentContainer
     init(){
         persistentContainer = NSPersistentContainer(name: "Producto")
@@ -19,7 +19,7 @@ class CoreData{
             }
         })
     }
-    func guardarEmpleado(id:Int32, Nombre:String, ApePat:String, ApeMat:String, Telefono:Int16){
+    func guardarEmpleado(id:Int32, Nombre:String, ApePat:String, ApeMat:String, Telefono:Int32){
         let empleado = Empleado(context: persistentContainer.viewContext)
         empleado.idEmpleado = id
         empleado.nombreEmpleado = Nombre
