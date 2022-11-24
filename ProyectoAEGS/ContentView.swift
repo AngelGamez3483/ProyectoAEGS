@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
     let coreDM: CoreDataManager
@@ -14,24 +15,24 @@ struct ContentView: View {
     @State private var apepatempleado = ""
     @State private var apematempleado = ""
     @State private var telefonoempleado = ""
-    let list = [Empleado]()
-    /*[
+    @State var list = [Empleado]()
+    @State var opc = [
         "Elemento 1",
         "Elemento 2",
         "Elemento 3",
         "Elemento 4",
         "Elemento 5"
-    ]*/
+    ]
     var body: some View {
         VStack{
             TabView{
                 NavigationView{
                     List{
                         ForEach(list, id: \.self){
-                            idempleado in
+                            emp in
                             HStack{
                                 Image(systemName: "person")
-                                Text(nombreempleado)
+                                Text(emp.nombreEmpleado ?? "")
                             }
                             .swipeActions{
                                 Button(action: {
@@ -51,70 +52,61 @@ struct ContentView: View {
                                 }.tint(.green)
                                 
                             }
+                            
                         }
+                        
                     }
+                    
                 }
                 .tabItem{
                     Image(systemName: "note")
                     Text("Datos")
                 }
+                
                 VStack{
-                    Text("Id de empleado")
+                    
                     TextField("Id", text: $idempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
-                        .padding()
                         
-                    Text("Nombre(s) de empleado")
                     TextField("Nombre(s)", text: $nombreempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
-                        .padding()
                     
-                    Text("Apellido paterno de empleado")
                     TextField("Apellido paterno", text: $apepatempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
-                        .padding()
                     
-                    Text("Apellido materno de empleado")
                     TextField("Apellido materno", text: $apematempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
-                        .padding()
                     
-                    Text("Telefono de empleado")
                     TextField("Telefono", text: $telefonoempleado)
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.telephoneNumber)
-                        .padding()
                     
-                    
-                    /*Button("Guardar"){
-                        coreDM.guardarEmpleado(id: 1, Nombre: nombreempleado, ApePat: apepatempleado, ApeMat: apematempleado, Telefono: 1234567890)
-                        ObtenerTodosLosEmpleados()
-                        idempleado = ""
-                        nombreempleado = ""
-                        apematempleado = ""
-                        apepatempleado = ""
-                        telefonoempleado = ""
-                    }*/
+                     Button("Guardar"){
+                         coreDM.guardarEmpleado(id: idempleado, Nombre: nombreempleado, ApePat: apepatempleado, ApeMat: apematempleado, Telefono: telefonoempleado)
+                         ObtenerTodosLosEmpleados()
+                         idempleado = ""
+                         nombreempleado = ""
+                         apematempleado = ""
+                         apepatempleado = ""
+                         telefonoempleado = ""
+                     }
                 }
-                Button("Guardar"){
-                    coreDM.guardarEmpleado(id: 1, Nombre: nombreempleado, ApePat: apepatempleado, ApeMat: apematempleado, Telefono: 1234567890)
-                    //ObtenerTodosLosEmpleados()
-                    idempleado = ""
-                    nombreempleado = ""
-                    apematempleado = ""
-                    apepatempleado = ""
-                    telefonoempleado = ""
-                }
+                
                 .tabItem{
                     Image(systemName: "cross")
                     Text("Agregar")
                 }
             }
-        }
+        }.onAppear(perform: {
+            ObtenerTodosLosEmpleados()
+        })
+    }
+    func ObtenerTodosLosEmpleados(){
+        list = coreDM.ObtenerTodosLosEmpleados()
     }
 }
 

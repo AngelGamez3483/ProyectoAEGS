@@ -11,7 +11,7 @@ import CoreData
 class CoreDataManager{
     let persistentContainer: NSPersistentContainer
     init(){
-        persistentContainer = NSPersistentContainer(name: "Producto")
+        persistentContainer = NSPersistentContainer(name: "Empleado")
         persistentContainer.loadPersistentStores(completionHandler: {
             (description, error) in
             if let error = error {
@@ -19,7 +19,7 @@ class CoreDataManager{
             }
         })
     }
-    func guardarEmpleado(id:Int32, Nombre:String, ApePat:String, ApeMat:String, Telefono:Int32){
+    func guardarEmpleado(id:String, Nombre:String, ApePat:String, ApeMat:String, Telefono:String){
         let empleado = Empleado(context: persistentContainer.viewContext)
         empleado.idEmpleado = id
         empleado.nombreEmpleado = Nombre
