@@ -16,13 +16,6 @@ struct ContentView: View {
     @State private var apematempleado = ""
     @State private var telefonoempleado = ""
     @State var list = [Empleado]()
-    @State var opc = [
-        "Elemento 1",
-        "Elemento 2",
-        "Elemento 3",
-        "Elemento 4",
-        "Elemento 5"
-    ]
     var body: some View {
         VStack{
             TabView{
@@ -36,12 +29,15 @@ struct ContentView: View {
                             }
                             .swipeActions{
                                 Button(action: {
-                                    print("Eliminar")
+                                    let empleado  = emp
+                                    BorrarEmpleado(empleado: empleado)
                                 }){
-                                    Image(systemName: "")
+                                    Text("Borrar")
                                 }.tint(.red)
                                 Button(action: {
-                                    print("Editar")
+                                    NavigationLink(destination: Text("Hola")){
+                                        Text("¿como te va")
+                                    }.onAppear()
                                 }){
                                     Image(systemName: "pencil")
                                 }.tint(.cyan)
@@ -107,6 +103,13 @@ struct ContentView: View {
     }
     func ObtenerTodosLosEmpleados(){
         list = coreDM.ObtenerTodosLosEmpleados()
+    }
+    func BorrarEmpleado(empleado:Empleado){
+        coreDM.BorrarEmpleado(empleado: empleado)
+        ObtenerTodosLosEmpleados()
+    }
+    func EditarEmpleado(){
+        
     }
 }
 
