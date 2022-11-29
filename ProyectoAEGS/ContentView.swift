@@ -10,11 +10,17 @@ import CoreData
 
 struct ContentView: View {
     let coreDM: CoreDataManager
-    @State private var idempleado = ""
-    @State private var nombreempleado = ""
-    @State private var apepatempleado = ""
-    @State private var apematempleado = ""
-    @State private var telefonoempleado = ""
+    @State var editar = false
+    @State var idempleado = ""
+    @State var nombreempleado = ""
+    @State var apepatempleado = ""
+    @State var apematempleado = ""
+    @State var telefonoempleado = ""
+    @State var i = ""
+    @State var n = ""
+    @State var ap = ""
+    @State var am = ""
+    @State var t = ""
     @State var list = [Empleado]()
     var body: some View {
         VStack{
@@ -34,21 +40,28 @@ struct ContentView: View {
                                 }){
                                     Text("Borrar")
                                 }.tint(.red)
+                                
                                 Button(action: {
-                                    NavigationLink(destination: Text("Hola")){
-                                        Text("¿como te va")
-                                    }.onAppear()
+                                    i = emp.idEmpleado ?? ""
+                                    n = emp.nombreEmpleado  ?? ""
+                                    ap = emp.apePaterno ?? ""
+                                    am = emp.apeMaterno ?? ""
+                                    t = emp.telefono ?? ""
+                                    editar = true
                                 }){
                                     Image(systemName: "pencil")
                                 }.tint(.cyan)
-                                Button(action: {
+                                
+                                /*Button(action: {
                                     print("Consultar")
                                 }){
                                     Image(systemName: "eye")
-                                }.tint(.green)
+                                }.tint(.green)*/
                                 
                             }
-                            
+                            NavigationLink(destination: ViewEditar(coreDM: coreDM, id: $i, nombre: $n, apePat: $ap, apeMat: $am, Telefono: $t), isActive: $editar){
+                                Text("")
+                            }.hidden()
                         }
                         
                     }
@@ -109,6 +122,9 @@ struct ContentView: View {
         ObtenerTodosLosEmpleados()
     }
     func EditarEmpleado(){
+        
+    }
+    func CambiarPantalla(){
         
     }
 }

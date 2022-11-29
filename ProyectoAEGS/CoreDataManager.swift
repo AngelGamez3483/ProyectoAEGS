@@ -69,4 +69,22 @@ class CoreDataManager{
             print("Error en \(error)")
         }
     }
+    func ActualizarEmpleado(id:String, nombre:String, apepat: String, apemat:String, telefono:String){
+        let fetchRequest : NSFetchRequest<Empleado> = Empleado.fetchRequest()
+        let predicate = NSPredicate(format: "idEmpleado = %@", id ?? "")
+        fetchRequest.predicate = predicate
+        
+        do{
+            let datos  = try persistentContainer.viewContext.fetch(fetchRequest)
+            let p = datos.first
+            p?.nombreEmpleado = nombre
+            p?.apePaterno = apepat
+            p?.apeMaterno = apemat
+            p?.telefono = telefono
+            try persistentContainer.viewContext.save()
+            print("producto guardado")
+        }catch{
+            print("Error en \(error)")
+        }
+    }
 }
