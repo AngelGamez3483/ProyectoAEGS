@@ -31,7 +31,7 @@ struct ContentView: View {
                             emp in
                             HStack{
                                 Image(systemName: "person")
-                                Text(emp.nombreEmpleado ?? "")
+                                Text(emp.idEmpleado ?? "")
                             }
                             .swipeActions{
                                 Button(action: {
@@ -51,12 +51,6 @@ struct ContentView: View {
                                 }){
                                     Image(systemName: "pencil")
                                 }.tint(.cyan)
-                                
-                                /*Button(action: {
-                                    print("Consultar")
-                                }){
-                                    Image(systemName: "eye")
-                                }.tint(.green)*/
                                 
                             }
                             NavigationLink(destination: ViewEditar(coreDM: coreDM, id: $i, nombre: $n, apePat: $ap, apeMat: $am, Telefono: $t), isActive: $editar){
@@ -120,12 +114,6 @@ struct ContentView: View {
     func BorrarEmpleado(empleado:Empleado){
         coreDM.BorrarEmpleado(empleado: empleado)
         ObtenerTodosLosEmpleados()
-    }
-    func EditarEmpleado(){
-        
-    }
-    func CambiarPantalla(){
-        
     }
 }
 

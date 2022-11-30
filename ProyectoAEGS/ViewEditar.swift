@@ -10,7 +10,6 @@ import CoreData
 
 struct ViewEditar:  View{
     let coreDM: CoreDataManager
-    //@Binding var empleado: Empleado
     @Binding var id: String
     @Binding var nombre: String
     @Binding var apePat: String
@@ -40,8 +39,3 @@ struct ViewEditar:  View{
         }
     }
 }
-/*struct ViewEditar_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(coreDM: "", editar: <#T##Bool#>, list: <#T##[Empleado]#>)
-    }
-}*/
